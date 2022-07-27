@@ -7,6 +7,7 @@ import { Button, Icon, Input } from "react-native-elements";
 
 export default function Form(props: any) {
 
+  const [id, setId] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -31,28 +32,27 @@ export default function Form(props: any) {
   }
 
   const handleCadastrar = async () => {
-    console.log('entrou aqui')
+    console.log('entrou aqui', title)
     try {
       setLoading(true)
       await AxiosInstance.post('/products', {
-        title, price, description, image, category
+        title: title, price: price, description: description, image: image, category: category
       })
       Alert.alert(
         "Sucesso",
       );
+      console.log("Nome:", title, "Preço:", price, "Descrição:", description, "Imagem:", image, "Categoria:", category, "[*If you send an object like the code above, it will return you an object with a new id. remember that nothing in real will insert into the database. so if you want to access the new id you will get a 404 error. You can check it on: https://fakestoreapi.com/docs]")
       clearInputs();
       setLoading(false);
       props.navigation.goBack();
     } catch (error) {
-      console.log('Erro ao cadastrar o cliente: ' + JSON.stringify(error))
-    } 
+      console.log('Erro ao cadastrar o produto: ' + JSON.stringify(error))
+    }
   }
 
   return (
-    <View
-
-    >
-      <View >
+    <View>
+      <View>
         <Input
           onChangeText={setTitle}
           placeholder="Title"
@@ -70,7 +70,7 @@ export default function Form(props: any) {
         />
         <Input
           onChangeText={setDescription}
-          placeholder="Descrição"
+          placeholder="Description"
           keyboardType="default"
 
 
@@ -78,7 +78,7 @@ export default function Form(props: any) {
         />
         <Input
           onChangeText={setImage}
-          placeholder="Endereço Imagem"
+          placeholder="Image URL"
           keyboardType="default"
 
           autoCompleteType={undefined}

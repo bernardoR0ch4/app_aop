@@ -13,7 +13,7 @@ type ProductsType = {
     image: string;
 }
 
-const Products = ({ route, navigation, title }) => {
+const Products = ({ navigation }) => {
     const [products, setProducts] = useState<ProductsType[]>([]);
 
     useEffect(() => {
