@@ -7,7 +7,6 @@ import { Button, Icon, Input } from "react-native-elements";
 
 export default function Form(props: any) {
 
-  const [id, setId] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [description, setDescription] = React.useState("");
