@@ -17,15 +17,15 @@ const BottomTabNavigator = () => {
       tabBarStyle:{backgroundColor: '#fff', borderBottomWidth:0,}
     }} >
       <TabNavigation.Screen 
-        name='HomeTabScreen' 
+        name='ProductsTabScreen' 
         options={{
           title:'Produtos',
-          tabBarIcon: () => (<Icon name='home' color='#000' type='font-awesome' size={24} />)
+          tabBarIcon: () => (<Icon name='list' color='#000' type='font-awesome' size={24} />)
         }} 
         component={Products}
       />
       <TabNavigation.Screen 
-        name='CategoriasTabScreen' 
+        name='CadastroTabScreen' 
         component={Cadastro}
         options={{
           title:'Cadastro de produtos',
@@ -36,22 +36,6 @@ const BottomTabNavigator = () => {
   );
 }
 
-const DrawerNavigation = createDrawerNavigator();
-const NavigationDrawer = () => {
-  return (
-    <DrawerNavigation.Navigator>
-      <DrawerNavigation.Screen 
-        name="TabNavigationScreen" 
-        options={{title:'Home Principal'}}
-        component={BottomTabNavigator} />
-      <DrawerNavigation.Screen
-        name="CategoriasDrawerScreen"
-        component={Cadastro}
-       />  
-    </DrawerNavigation.Navigator>
-  );
-}
-
 const StackNavigation = createNativeStackNavigator();
 export default () => {
   
@@ -59,14 +43,9 @@ export default () => {
   <NavigationContainer>
     <StackNavigation.Navigator>
      <StackNavigation.Screen
-      options={{ headerShown: false }}
-      name="LoginScreen"
+      options={{ headerShown: true }}
+      name="Products Store"
       component={BottomTabNavigator}
-      /> 
-     <StackNavigation.Screen
-      options={{ headerShown: false }}
-      name="HomeScreen"
-      component={NavigationDrawer}
       /> 
     </StackNavigation.Navigator>
   </NavigationContainer>
