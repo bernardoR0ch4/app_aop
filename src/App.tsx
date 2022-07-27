@@ -7,27 +7,28 @@ import { Icon } from 'react-native-elements';
 
 import React from 'react';
 import Products from '../pages/Products';
+import Cadastro from '../pages/Cadastro';
 
 const TabNavigation = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return(
     <TabNavigation.Navigator screenOptions={{
       headerShown:false,
-      tabBarStyle:{backgroundColor: '#7054b6', borderBottomWidth:0,}
+      tabBarStyle:{backgroundColor: '#fff', borderBottomWidth:0,}
     }} >
       <TabNavigation.Screen 
         name='HomeTabScreen' 
         options={{
-          title:'Home',
+          title:'Produtos',
           tabBarIcon: () => (<Icon name='home' color='#000' type='font-awesome' size={24} />)
         }} 
         component={Products}
       />
       <TabNavigation.Screen 
         name='CategoriasTabScreen' 
-        component={Products}
+        component={Cadastro}
         options={{
-          title:'Categorias',
+          title:'Cadastro de produtos',
           tabBarIcon: () => (<Icon name='list' color='#000' type='font-awesome' size={24} />)
         }} 
       />
@@ -45,7 +46,7 @@ const NavigationDrawer = () => {
         component={BottomTabNavigator} />
       <DrawerNavigation.Screen
         name="CategoriasDrawerScreen"
-        component={Products}
+        component={Cadastro}
        />  
     </DrawerNavigation.Navigator>
   );
@@ -60,7 +61,7 @@ export default () => {
      <StackNavigation.Screen
       options={{ headerShown: false }}
       name="LoginScreen"
-      component={Products}
+      component={BottomTabNavigator}
       /> 
      <StackNavigation.Screen
       options={{ headerShown: false }}
